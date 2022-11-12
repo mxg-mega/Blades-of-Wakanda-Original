@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        //if(Input.GetKeyDown(KeyCode.LeftArrow))
         //horizontalInput = Input.GetAxis("Veritical");
-        transform.Translate(Vector3(), speed * Time.deltaTime * horizontalInput);
+        //transform.Translate(Vector3(), speed * Time.deltaTime * horizontalInput);
     }
 }

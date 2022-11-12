@@ -14,6 +14,7 @@ public class MoveBack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
+        //for the right mountain to go backwards
+        transform.Translate(speed * Time.deltaTime * Vector3.back);
     }
 }
