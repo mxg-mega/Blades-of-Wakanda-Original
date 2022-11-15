@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private CharacterController controller;
+
     public float speed = 10.0f;
     public float verticalInput;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
