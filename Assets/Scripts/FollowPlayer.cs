@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public GameObject player;
-    private Vector3 offset = new Vector3(0, 5, -7);
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+    public Transform wakanda; // player
+    public Vector3 offset = new Vector3(0, 3.0f, -1.5f);  
 
-    // Update is called once per frame
+
+                             
+   
+    // LateUpdate is called after the player has moved
     void LateUpdate()
     {
-        // offset the camera behind the player by adding to the player's position
-        transform.position = player.transform.position + offset;
-    }
+
+
+        // where the player should be
+        Vector3 desiredPosition = wakanda.position + offset;
+        desiredPosition.x = 0;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime);
+           }
 }
