@@ -7,23 +7,49 @@ public class PlayerControllerII : MonoBehaviour
     private const float LANE_DISTANCE = 5.0f;
     private const float TURN_SPEED = 0.05f;
 
+    // For the animations
+    //private Animator anim;
+
+    //
+    private bool isRunning = false;
+
     //Movements
     private CharacterController controller;
     private float jumpForce = 10.0f;
     private float gravity = 12.0f;
     private float verticalVelocity;
-    public float speed;
     public int lane = 1;//0 = Left, 1 = Midddle, 2 = Right
+
+    // Modification for the speed and Management
+    private float originalSpeed = 7.0f;
+    private float speed;
+    private float speedIncreaseLastTick;
+    private float speedIncreaseTime = 2.5f;
+    private float speedIncreaseAmount = 0.1f;
 
     // Start is called before the first frame update
     void Start()
     {
+        speed = originalSpeed;
         controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (!isRunning)
+        {
+            return;
+        }
+
+        if(Time.time - speedIncreaseLastTick > speedIncreaseTime)
+        {
+            
+            speedIncreaseLastTick = Time.time;
+            speed += speedIncreaseAmount;
+            GameManager.Instance.UpdateModifier(speed - originalSpeed);
+        }
 
         //Lane Movements and the inputs
         if (MobileInput.Instance.SwipeLeft)
@@ -66,6 +92,12 @@ public class PlayerControllerII : MonoBehaviour
                 //Jump Up
                 verticalVelocity = jumpForce;
             }
+            else if (MobileInput.Instance.SwipeDown)
+            {
+                // Slide
+                StartSliding();
+                Invoke("StopSliding", 1.0f);
+            }
         }
         else
         {
@@ -94,6 +126,7 @@ public class PlayerControllerII : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward, dir, TURN_SPEED);
         }
     }
+
     private void MoveLane(bool goingRight)
     {
         lane += (goingRight) ? 1 : -1;
@@ -107,5 +140,40 @@ public class PlayerControllerII : MonoBehaviour
         Debug.DrawRay(groundRay.origin, groundRay.direction, Color.cyan, 1.0f);
 
         return Physics.Raycast(groundRay, 0.2f + 0.1f);
+    }
+
+    private void StartSliding()
+    {
+        //anim.setbool("Sliding", true);
+        controller.height /= 2;
+        controller.center = new Vector3(controller.center.x, controller.center.y / 2, controller.center.z);
+    }
+
+    private void StopSliding()
+    {
+        //anim.setbool("Sliding", true);
+        controller.height *= 2;
+        controller.center = new Vector3(controller.center.x, controller.center.y * 2, controller.center.z);
+    }
+
+    public void StartRunning()
+    {
+        isRunning = true;
+    }
+
+   public void Crash()
+    {
+        // Death animation goes here
+        isRunning = false;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        switch (hit.gameObject.tag)
+        {
+            case "Obstacle":
+                Crash();
+                break;
+        }
     }
 }
