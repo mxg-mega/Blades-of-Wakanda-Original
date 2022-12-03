@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    // animations
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,7 +23,9 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            GameManager.Instance.GetCoin();
+            anim.SetTrigger("Collected");
+            Destroy(gameObject, 1.5f);
         }
         
     }

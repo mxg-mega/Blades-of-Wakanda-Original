@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { set; get; }
 
+    public bool IsDead { set; get; }
     private bool isGamestarted = false;
     private PlayerControllerII player;
 
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
             player.StartRunning();
         }
 
-        if (isGamestarted)
+        if (isGamestarted && !IsDead)
         {
             // Read score and add up
             score += (Time.deltaTime * modifierScore);
@@ -55,13 +56,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void GetCoin()
+    public void GetCoin()
     {
-        coinScore += COIN_SCORE_AMOUNT;
+        coinScore++;
+        coinText.text = coinScore.ToString("0");
+        score += COIN_SCORE_AMOUNT;
         scoreText.text = score.ToString("0");
     }
-
-    
 
     public void UpdateModifier(float modifierAmount)
     {

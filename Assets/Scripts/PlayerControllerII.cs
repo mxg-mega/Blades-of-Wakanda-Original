@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControllerII : MonoBehaviour
 {
-    private const float LANE_DISTANCE = 5.0f;
+    private const float LANE_DISTANCE = 4.5f;
     private const float TURN_SPEED = 0.05f;
 
     // For the animations
@@ -21,7 +21,7 @@ public class PlayerControllerII : MonoBehaviour
     public int lane = 1;//0 = Left, 1 = Midddle, 2 = Right
 
     // Modification for the speed and Management
-    private float originalSpeed = 7.0f;
+    private float originalSpeed = 10.0f;
     private float speed;
     private float speedIncreaseLastTick;
     private float speedIncreaseTime = 2.5f;
@@ -165,6 +165,7 @@ public class PlayerControllerII : MonoBehaviour
     {
         // Death animation goes here
         isRunning = false;
+        GameManager.Instance.IsDead = true;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
