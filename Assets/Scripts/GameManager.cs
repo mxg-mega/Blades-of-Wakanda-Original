@@ -2,24 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     private const int COIN_SCORE_AMOUNT = 5;
 
+    public GameObject gamePlaypanel;
+    public GameObject levelPanel;
+    public GameObject paueTestPanel;
+
+    // supposed to be on the OnClickEvents script 
+    public GameObject greetingMesPanel;
+    public GameObject startPanel;
+    public bool isMessageActive;
+    
+
     public static GameManager Instance { set; get; }
 
     public bool IsDead { set; get; }
+    
     private bool isGamestarted = false;
     private PlayerControllerII player;
+    private OnClickEvents message;
 
     // UI and UI Fields
     public Text scoreText, coinText, modifierText;
     private float score, coinScore, modifierScore;
     private int lastScore;
 
+    //DeATHmENU 
+    //public Animator deathMenuAnim;
+    public Text deadscoreText, deadcoinText;
+
     private void Awake()
     {
+        startPanel.SetActive(true);
         Instance = this;
         modifierScore = 1.0f;
         scoreText.text = score.ToString("0");
@@ -31,16 +49,26 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // supposed to be on the OnClickEvents script 
+       isMessageActive= false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (MobileInput.Instance.Tap && !isGamestarted)
+        if (MobileInput.Instance.Tap && !isGamestarted && isMessageActive )
         {
+
+           /* if(EventSystem.current.IsPointerOverGameObject())
+                return;
+*/
             isGamestarted = true;
+            gamePlaypanel.SetActive(true);
+            greetingMesPanel.SetActive(false);
+
             player.StartRunning();
+           // FindObjectOfType<CameraMotor>().IsMoving= true; 
+
         }
 
         if (isGamestarted && !IsDead)
@@ -69,4 +97,36 @@ public class GameManager : MonoBehaviour
         modifierScore = 1.0f + modifierAmount;
         modifierText.text = "x" + modifierScore.ToString("0.0");
     }
+
+    public void OnPlayButton()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game Scene");
+        levelPanel.SetActive(false);
+        gamePlaypanel.SetActive(true);
+        paueTestPanel.SetActive(false);
+    }
+
+    public void OnDeath()
+    {
+        IsDead= true;
+        // pause game 
+        Time.timeScale= 0;
+        deadscoreText.text = score.ToString("0");
+        deadcoinText.text= coinScore.ToString("0");
+        levelPanel.SetActive(true);
+        gamePlaypanel.SetActive(false);
+       
+    }
+
+    // supposed to be on the OnClickEvents script 
+    public void Message()
+    {
+        greetingMesPanel.SetActive(true);
+        startPanel.SetActive(false);
+        isMessageActive= true;
+    }
+
+   
+
+
 }
