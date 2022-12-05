@@ -37,7 +37,7 @@ public class CoinSpawner : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach(GameObject go in coins)
+        foreach(GameObject go in coins);
     }
 
     // Start is called before the first frame update

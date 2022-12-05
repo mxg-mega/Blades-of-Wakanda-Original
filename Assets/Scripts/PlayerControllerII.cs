@@ -7,11 +7,15 @@ public class PlayerControllerII : MonoBehaviour
     private const float LANE_DISTANCE = 5f;
     private const float TURN_SPEED = 0.05f;
 
+    
+
     // For the animations
     //private Animator anim;
 
     //
     private bool isRunning = false;
+
+    
 
     //Movements
     private CharacterController controller;
@@ -144,6 +148,7 @@ public class PlayerControllerII : MonoBehaviour
 
     private void StartSliding()
     {
+        
         //anim.setbool("Sliding", true);
         controller.height /= 2;
         controller.center = new Vector3(controller.center.x, controller.center.y / 2, controller.center.z);
@@ -166,6 +171,7 @@ public class PlayerControllerII : MonoBehaviour
         // Death animation goes here
         isRunning = false;
         GameManager.Instance.IsDead = true;
+        GameManager.Instance.OnDeath();
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
