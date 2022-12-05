@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     // Level Spawning
     private const float DISTANCE_BEFORE_SPAWN = 200.0f;
     private const int INITIAL_SEGMENTS = 20;
+    private const int INITIAL_TRANSITION_SEGMENT = 2;
     private const int MAX_SEGMENT_ON_SCREEN = 25;
     private Transform cameraContainer;
     private int amountOfActiveSegments;
@@ -28,6 +29,7 @@ public class LevelManager : MonoBehaviour
     public List<Piece> longBlocks = new List<Piece>();
     public List<Piece> slides = new List<Piece>();
     public List<Piece> jumps = new List<Piece>();
+    public List<Piece> longSlides = new List<Piece>();
     [HideInInspector]
     public List<Piece> pieces = new List<Piece>();// All the pieses that we have
 
@@ -52,8 +54,16 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < INITIAL_SEGMENTS; i++)
         {
-            // Generate a segment
-            GenerateSegment();
+            if(i < INITIAL_TRANSITION_SEGMENT)
+            {
+                SpawnTransition();
+            }
+            else
+            {
+                // Generate a segment
+                GenerateSegment();
+            }
+            
         }
     }
 
@@ -173,6 +183,10 @@ public class LevelManager : MonoBehaviour
             else if(pieceType == PieceType.slide)
             {
                 go = slides[visulaIndex].gameObject;
+            }
+            else if (pieceType == PieceType.longSlides)
+            {
+                go = longSlides[visulaIndex].gameObject;
             }
 
             go = Instantiate(go);
