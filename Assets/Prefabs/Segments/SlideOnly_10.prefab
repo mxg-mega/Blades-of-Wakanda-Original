@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: 0
-  lenght: 25
+  lenght: 15
   beginY1: 0
   beginY2: 0
   beginY3: 0
   endY1: 0
-  endY2: 2
+  endY2: 1
   endY3: 0
   pieces: []
 --- !u!1001 &5642680011732246576
@@ -64,10 +64,6 @@ PrefabInstance:
     - target: {fileID: 2526109026985109750, guid: 466246339bf242d4fbe8d48e530418cf, type: 3}
       propertyPath: m_Name
       value: Slide
-      objectReference: {fileID: 0}
-    - target: {fileID: 2526109026985109750, guid: 466246339bf242d4fbe8d48e530418cf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2526109026985109751, guid: 466246339bf242d4fbe8d48e530418cf, type: 3}
       propertyPath: m_RootOrder
@@ -83,7 +79,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2526109026985109751, guid: 466246339bf242d4fbe8d48e530418cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2526109026985109751, guid: 466246339bf242d4fbe8d48e530418cf, type: 3}
       propertyPath: m_LocalRotation.w

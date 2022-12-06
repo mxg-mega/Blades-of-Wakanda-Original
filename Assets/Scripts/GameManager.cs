@@ -16,12 +16,12 @@ public class GameManager : MonoBehaviour
     public GameObject greetingMesPanel;
     public GameObject startPanel;
     public bool isMessageActive;
-    
+
 
     public static GameManager Instance { set; get; }
 
     public bool IsDead { set; get; }
-    
+
     private bool isGamestarted = false;
     private PlayerControllerII player;
     private OnClickEvents message;
@@ -50,24 +50,24 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // supposed to be on the OnClickEvents script 
-       isMessageActive= false;
+        isMessageActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (MobileInput.Instance.Tap && !isGamestarted && isMessageActive )
+        if (MobileInput.Instance.Tap && !isGamestarted && isMessageActive)
         {
 
-           /* if(EventSystem.current.IsPointerOverGameObject())
-                return;
-*/
+            /* if(EventSystem.current.IsPointerOverGameObject())
+                 return;
+ */
             isGamestarted = true;
             gamePlaypanel.SetActive(true);
             greetingMesPanel.SetActive(false);
 
             player.StartRunning();
-           // FindObjectOfType<CameraMotor>().IsMoving= true; 
+            // FindObjectOfType<CameraMotor>().IsMoving= true; 
 
         }
 
@@ -108,14 +108,14 @@ public class GameManager : MonoBehaviour
 
     public void OnDeath()
     {
-        IsDead= true;
+        IsDead = true;
         // pause game 
-        Time.timeScale= 0;
+        Time.timeScale = 0;
         deadscoreText.text = score.ToString("0");
-        deadcoinText.text= coinScore.ToString("0");
+        deadcoinText.text = coinScore.ToString("0");
         levelPanel.SetActive(true);
         gamePlaypanel.SetActive(false);
-       
+
     }
 
     // supposed to be on the OnClickEvents script 
@@ -123,10 +123,10 @@ public class GameManager : MonoBehaviour
     {
         greetingMesPanel.SetActive(true);
         startPanel.SetActive(false);
-        isMessageActive= true;
+        isMessageActive = true;
     }
 
-   
+
 
 
 }
