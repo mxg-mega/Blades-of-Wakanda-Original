@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayButton()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game Scene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
         levelPanel.SetActive(false);
         gamePlaypanel.SetActive(true);
         paueTestPanel.SetActive(false);
