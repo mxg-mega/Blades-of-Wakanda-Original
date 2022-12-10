@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
         levelPanel.SetActive(false);
         gamePlaypanel.SetActive(true);
         paueTestPanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void OnDeath()
