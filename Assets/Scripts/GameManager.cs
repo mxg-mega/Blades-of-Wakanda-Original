@@ -22,9 +22,10 @@ public class GameManager : MonoBehaviour
 
     public bool IsDead { set; get; }
 
-    private bool isGamestarted = false;
+    public bool isGamestarted = false;
     private PlayerControllerII player;
     private OnClickEvents message;
+    private Animator playerAnim;
 
     // UI and UI Fields
     public Text scoreText, coinText, modifierText;
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour
             greetingMesPanel.SetActive(false);
 
             player.StartRunning();
-            // FindObjectOfType<CameraMotor>().IsMoving= true; 
+            FindObjectOfType<ScenerySpawner>().IsScrolling = true;
 
         }
 
@@ -110,6 +111,7 @@ public class GameManager : MonoBehaviour
     public void OnDeath()
     {
         IsDead = true;
+        FindObjectOfType<ScenerySpawner>().IsScrolling = false;
         // pause game 
         Time.timeScale = 0;
         deadscoreText.text = score.ToString("0");
@@ -126,8 +128,4 @@ public class GameManager : MonoBehaviour
         startPanel.SetActive(false);
         isMessageActive = true;
     }
-
-
-
-
 }

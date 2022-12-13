@@ -17,13 +17,22 @@ public class CoinSpawner : MonoBehaviour
         {
             coins[i] = transform.GetChild(i).gameObject;
         }
+        OnDisable();
     }
 
     private void OnEnable()
     {
-        if(Random.Range(0.0f, 1.0f) < chanceToSpawn)
+        if(Random.Range(0.0f, 1.0f) > chanceToSpawn)
         {
             return;
+        }
+
+        if (forceSpawnAll)
+        {
+            for (int i = 0; i < maxCoin; i++)
+            {
+                coins[i].SetActive(true);
+            }
         }
         else
         {
@@ -37,18 +46,9 @@ public class CoinSpawner : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach(GameObject go in coins);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach (GameObject go in coins)
+        {
+            go.SetActive(false);
+        }
     }
 }

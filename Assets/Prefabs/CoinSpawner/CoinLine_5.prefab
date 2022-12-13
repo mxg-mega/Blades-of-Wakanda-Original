@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3536731535062201917}
+  - component: {fileID: 593930803206485048}
   m_Layer: 0
   m_Name: CoinLine_5
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -25,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 5923834481524708616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2203277309075019997}
@@ -36,6 +37,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &593930803206485048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923834481524708616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9a5be91da641a41bd0f91dd192dd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCoin: 5
+  chanceToSpawn: 0.5
+  forceSpawnAll: 0
 --- !u!1001 &869784230446829878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43,6 +59,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3536731535062201917}
     m_Modifications:
+    - target: {fileID: 7943334832172294789, guid: ed4d220344621d84ba7f648f09d3d5e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db16ddef690dced42a6cccf0ec50207e, type: 2}
     - target: {fileID: 7955633621733596410, guid: ed4d220344621d84ba7f648f09d3d5e9, type: 3}
       propertyPath: m_Name
       value: Coin (2)
@@ -105,6 +125,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3536731535062201917}
     m_Modifications:
+    - target: {fileID: 7943334832172294789, guid: ed4d220344621d84ba7f648f09d3d5e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db16ddef690dced42a6cccf0ec50207e, type: 2}
     - target: {fileID: 7955633621733596410, guid: ed4d220344621d84ba7f648f09d3d5e9, type: 3}
       propertyPath: m_Name
       value: Coin (1)
@@ -167,6 +191,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3536731535062201917}
     m_Modifications:
+    - target: {fileID: 7943334832172294789, guid: ed4d220344621d84ba7f648f09d3d5e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db16ddef690dced42a6cccf0ec50207e, type: 2}
     - target: {fileID: 7955633621733596410, guid: ed4d220344621d84ba7f648f09d3d5e9, type: 3}
       propertyPath: m_Name
       value: Coin (3)
@@ -229,6 +257,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3536731535062201917}
     m_Modifications:
+    - target: {fileID: 7943334832172294789, guid: ed4d220344621d84ba7f648f09d3d5e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db16ddef690dced42a6cccf0ec50207e, type: 2}
     - target: {fileID: 7955633621733596410, guid: ed4d220344621d84ba7f648f09d3d5e9, type: 3}
       propertyPath: m_Name
       value: Coin (4)
@@ -301,6 +333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9a5be91da641a41bd0f91dd192dd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxCoin: 5
+  chanceToSpawn: 0.5
+  forceSpawnAll: 0
 --- !u!1001 &8141254317279380518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -308,6 +343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3536731535062201917}
     m_Modifications:
+    - target: {fileID: 7943334832172294789, guid: ed4d220344621d84ba7f648f09d3d5e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db16ddef690dced42a6cccf0ec50207e, type: 2}
     - target: {fileID: 7955633621733596410, guid: ed4d220344621d84ba7f648f09d3d5e9, type: 3}
       propertyPath: m_Name
       value: Coin

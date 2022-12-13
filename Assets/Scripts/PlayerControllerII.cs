@@ -10,10 +10,10 @@ public class PlayerControllerII : MonoBehaviour
     
 
     // For the animations
-    //private Animator anim;
+    private Animator playerAnim;
 
     //
-    private bool isRunning = false;
+    public bool isRunning = false;
 
     
 
@@ -22,7 +22,7 @@ public class PlayerControllerII : MonoBehaviour
     private float jumpForce = 10.0f;
     private float gravity = 12.0f;
     private float verticalVelocity;
-    public int lane = 1;//0 = Left, 1 = Midddle, 2 = Right
+    private int lane = 1;//0 = Left, 1 = Midddle, 2 = Right
 
     // Modification for the speed and Management
     private float originalSpeed = 10.0f;
@@ -32,14 +32,15 @@ public class PlayerControllerII : MonoBehaviour
     private float speedIncreaseAmount = 0.1f;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         speed = originalSpeed;
         controller = GetComponent<CharacterController>();
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
         if (!isRunning)
@@ -67,10 +68,10 @@ public class PlayerControllerII : MonoBehaviour
             MoveLane(true);
         }
         
-       
 
-        //whereis the player aiming to move to
+        //where is the player aiming to move to
         Vector3 targetPosition = transform.position.z * Vector3.forward;
+
         if(lane == 0)
         {
             targetPosition += Vector3.left * LANE_DISTANCE;
@@ -84,16 +85,18 @@ public class PlayerControllerII : MonoBehaviour
         Vector3 moveVector = Vector3.zero;
         moveVector.x = (targetPosition - transform.position).normalized.x * speed;
 
+
         bool isGrounded = IsGrounded();
+        playerAnim.SetBool("Grounded", isGrounded);
 
-
-        if(IsGrounded())//if Grounded
+        if (IsGrounded())//if Grounded
         {
             verticalVelocity = -0.1f;
 
             if (MobileInput.Instance.SwipeUp)
             {
                 //Jump Up
+                playerAnim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
             }
             else if (MobileInput.Instance.SwipeDown)
@@ -139,7 +142,9 @@ public class PlayerControllerII : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Ray groundRay = new Ray(new Vector3(controller.bounds.center.x, (controller.bounds.center.y - controller.bounds.extents.y) + 0.2f, controller.bounds.center.z), Vector3.down);
+        Ray groundRay = new Ray(new Vector3(controller.bounds.center.x, 
+            (controller.bounds.center.y - controller.bounds.extents.y) + 0.2f, 
+            controller.bounds.center.z), Vector3.down);
 
         Debug.DrawRay(groundRay.origin, groundRay.direction, Color.cyan, 1.0f);
 
@@ -149,14 +154,14 @@ public class PlayerControllerII : MonoBehaviour
     private void StartSliding()
     {
         
-        //anim.setbool("Sliding", true);
+        //playerAnim.SetBool("Sliding", true);
         controller.height /= 2;
         controller.center = new Vector3(controller.center.x, controller.center.y / 2, controller.center.z);
     }
 
     private void StopSliding()
     {
-        //anim.setbool("Sliding", true);
+        //playerAnim.SetBool("Sliding", false);
         controller.height *= 2;
         controller.center = new Vector3(controller.center.x, controller.center.y * 2, controller.center.z);
     }
@@ -169,6 +174,7 @@ public class PlayerControllerII : MonoBehaviour
    public void Crash()
     {
         // Death animation goes here
+        playerAnim.SetBool("Dead", true);
         isRunning = false;
         GameManager.Instance.IsDead = true;
         GameManager.Instance.OnDeath();
