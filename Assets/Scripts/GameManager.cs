@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        // FindObjectOfType<AudioManager>().Play("Music");
         startPanel.SetActive(true);
         Instance = this;
         modifierScore = 1.0f;
