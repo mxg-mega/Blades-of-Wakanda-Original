@@ -19,7 +19,7 @@ public class PlayerControllerII : MonoBehaviour
 
     //Movements
     private CharacterController controller;
-    private float jumpForce = 10.0f;
+    private float jumpForce = 8.5f;
     private float gravity = 12.0f;
     private float verticalVelocity;
     private int lane = 1;//0 = Left, 1 = Midddle, 2 = Right
@@ -31,12 +31,15 @@ public class PlayerControllerII : MonoBehaviour
     private float speedIncreaseTime = 2.5f;
     private float speedIncreaseAmount = 0.1f;
 
+    private GameManager game;
+
     // Start is called before the first frame update
     private void Start()
     {
         speed = originalSpeed;
         controller = GetComponent<CharacterController>();
         playerAnim = GetComponent<Animator>();
+        game = GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -48,7 +51,7 @@ public class PlayerControllerII : MonoBehaviour
             return;
         }
 
-        if(Time.time - speedIncreaseLastTick > speedIncreaseTime)
+        if (Time.time - speedIncreaseLastTick > speedIncreaseTime)
         {
             
             speedIncreaseLastTick = Time.time;
@@ -168,13 +171,14 @@ public class PlayerControllerII : MonoBehaviour
 
     public void StartRunning()
     {
+        playerAnim.SetTrigger("StartRunning");
         isRunning = true;
     }
 
    public void Crash()
     {
         // Death animation goes here
-        playerAnim.SetBool("Dead", true);
+        playerAnim.SetTrigger("Death");
         isRunning = false;
         GameManager.Instance.IsDead = true;
         GameManager.Instance.OnDeath();

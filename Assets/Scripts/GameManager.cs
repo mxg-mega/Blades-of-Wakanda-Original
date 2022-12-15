@@ -53,6 +53,9 @@ public class GameManager : MonoBehaviour
     {
         // supposed to be on the OnClickEvents script 
         isMessageActive = false;
+
+        // animator
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame

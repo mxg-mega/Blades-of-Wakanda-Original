@@ -6,6 +6,9 @@ public class FollowPlayerII : MonoBehaviour
 {
     public GameObject player;
     public Vector3 offset = new Vector3(0f, 6f, -4.0f);
+
+    //public bool IsMoving { set; get; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +19,11 @@ public class FollowPlayerII : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        //if (!IsMoving)
+            //return;
+
         Vector3 desiredPosition = player.transform.position + offset;
-        desiredPosition.x = 0;
+        //desiredPosition.x = 0;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime);
     }
 }

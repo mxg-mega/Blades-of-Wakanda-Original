@@ -69,7 +69,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.68
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -86,8 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e3ddc38b8621648ac81a7d036e0dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  lane: 1
+  isRunning: 0
 --- !u!114 &974102426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +160,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 107bda5e6e3ea32478d79e5d2faff3c0, type: 2}
+  - {fileID: 2100000, guid: 76025a6767d7d70438494a492148b357, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
