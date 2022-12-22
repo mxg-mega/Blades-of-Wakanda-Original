@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScenerySpawner : MonoBehaviour
 {
-    private const float DISTANCE_TO_RESPAWN = 25.0f;
+    private const float DISTANCE_TO_RESPAWN = 30.0f;
 
     public float scrollSpeed = -2f;
     public float totalLenght;
