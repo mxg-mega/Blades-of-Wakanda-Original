@@ -24,6 +24,8 @@ public class PlayerControllerII : MonoBehaviour
     private float verticalVelocity;
     private int lane = 1;//0 = Left, 1 = Midddle, 2 = Right
 
+    public AudioManager audiomanager;
+
     // Modification for the speed and Management
     private float originalSpeed = 10.0f;
     private float speed;
@@ -99,12 +101,14 @@ public class PlayerControllerII : MonoBehaviour
             if (MobileInput.Instance.SwipeUp)
             {
                 //Jump Up
+                //audiomanager.Play("jump");
                 playerAnim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
             }
             else if (MobileInput.Instance.SwipeDown)
             {
                 // Slide
+                //audiomanager.Play("slide");
                 StartSliding();
                 Invoke("StopSliding", 1.0f);
             }

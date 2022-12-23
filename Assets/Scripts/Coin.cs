@@ -7,6 +7,8 @@ public class Coin : MonoBehaviour
     // animations
     private Animator anim;
 
+
+
     // Start is called before the first frame update
     void Awake()
     {

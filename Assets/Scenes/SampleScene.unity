@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18011239, g: 0.22550711, b: 0.3068169, a: 1}
+  m_IndirectSpecularColor: {r: 0.18011221, g: 0.22550674, b: 0.3068162, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -418,6 +418,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96010644}
   m_CullTransparentMesh: 1
+--- !u!1 &129208032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 129208034}
+  - component: {fileID: 129208035}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &129208034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129208032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &129208035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129208032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0d12af1f9ded94f9809f5ce8e45e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: music
+    clip: {fileID: 8300000, guid: 48734eb8cc858a34b987a3106b4e43b6, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: coins
+    clip: {fileID: 8300000, guid: 0e20e29bff421a4429fe6ba2257ffa63, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: crash
+    clip: {fileID: 8300000, guid: beb257ec4d7cec34fb2c5286a35e604d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: slide
+    clip: {fileID: 8300000, guid: 99b9e5956f02a344a8dbb33cb72461d2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: jump
+    clip: {fileID: 8300000, guid: 7b99105f6cb56dc4dba7250b51ed40c5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &176498826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,6 +1496,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 806462024, guid: 6c38788eb59ee6648b3b3b9833129e7b, type: 3}
+      propertyPath: audiomanager
+      value: 
+      objectReference: {fileID: 129208035}
     - target: {fileID: 5984477698544345927, guid: 6c38788eb59ee6648b3b3b9833129e7b, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2088,6 +2167,7 @@ MonoBehaviour:
   greetingMesPanel: {fileID: 1856234254}
   startPanel: {fileID: 1965468572}
   isMessageActive: 0
+  audiomanager: {fileID: 129208035}
   isGamestarted: 0
   scoreText: {fileID: 929426820}
   coinText: {fileID: 501885458}
@@ -2289,6 +2369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db68e4d74bd3ec47bbb8d22f6ecb919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!65 &1252854133
 BoxCollider:
   m_ObjectHideFlags: 0

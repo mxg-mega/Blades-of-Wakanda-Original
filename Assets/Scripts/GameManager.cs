@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject startPanel;
     public bool isMessageActive;
 
+    public AudioManager audiomanager;
+
 
     public static GameManager Instance { set; get; }
 
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // FindObjectOfType<AudioManager>().Play("Music");
+        audiomanager.Play("music");
         startPanel.SetActive(true);
         Instance = this;
         modifierScore = 1.0f;
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviour
 
     public void GetCoin()
     {
+        audiomanager.Play("coins");
         coinScore++;
         coinText.text = coinScore.ToString("0");
         score += COIN_SCORE_AMOUNT;
@@ -114,6 +117,7 @@ public class GameManager : MonoBehaviour
 
     public void OnDeath()
     {
+        //audiomanager.Play("crash");
         IsDead = true;
         FindObjectOfType<ScenerySpawner>().IsScrolling = false;
         // pause game 
